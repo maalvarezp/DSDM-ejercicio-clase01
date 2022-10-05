@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <title>Actividad 01</title>
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+        <script>
+            mermaid.initialize({ 
+                startOnLoad: true 
+            });
+        </script>
+    </head>
+    <body>
+        <div class="row">
+            <div class="col-8 m-auto my-5">
+                <div class="card">
+                    <div class="card-header">
+                        <strong>Maestría de Ingeniería en Software </strong> | 
+                        <strong>Autor: </strong> Máximo Álvarez (maalvarezp@unl.edu.ec)
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Modelo PSM del ejercicio planteado</h5>
+                        <hr>
+                        <div class="mermaid">
+                            %% Documentación
+                            %% https://mermaid-js.github.io/mermaid/#/classDiagram
+                            %% Referencia: Ejemplo PIM a PSM
+                            %% https://www.researchgate.net/profile/Claudia-Pons/publication/262765163/figure/fig3/AS:669505193791494@1536633885641/Figura-2-8-Ejemplo-de-transformacion-de-PIM-a-PSM-y-de-PSM-a-codigo_Q640.jpg
+                            %% Nota: para las clases enumeradas en el HTML se colocó el código ASCII de los caracteres de control '<'='&lt;' '>'='&gt;'
+
+                            classDiagram
+                            
+                                direction LR
+
+                                class TipoDeporte{
+                                    &lt;&lt;enumeration&gt;&gt;
+                                    FUTBOL
+                                    BALONCESTO
+                                    TENIS_MESA
+                                    TENIS_CAMPO
+                                    NATACION
+                                    CICLISMO
+                                    GOLF
+                                }
+
+                                class Equipo{
+                                    +nombre String
+                                    +tipoDeporte TipoDeporte
+                                    +siglas String
+                                    +setNombre(nombre String)
+                                    +getNombre() String
+                                    +setTipoDeporte(tipoDeporte TipoDeporte)
+                                    +getTipoDeporte() TipoDeporte
+                                    +setSiglas(siglas String)
+                                    +getSiglas() String
+                                    +getListaJugadores() List~Jugador~
+                                    +setListaJugadores(List~Jugador~ jugadores) 
+                                }
+
+                                class Jugador{
+                                    +nombre String
+                                    +apellido String
+                                    +setNombre(nombre String)
+                                    +getNombre() String
+                                    +setApellido(apellido String)
+                                    +getApellido() String
+                                    +getListaSanciones() List~Sanciones~
+                                    +setListaSanciones(List~Sanciones~ jugadores) 
+                                }
+
+                                class Sancion{
+                                    +observacion String
+                                    +multa String
+                                    +setObservacion(observacion String)
+                                    +getObservacion() String
+                                    +setMulta(multa String)
+                                    +getMulta() String
+                                }
+
+                                %% Relaciones
+                                Equipo "1" <-- "0..*" Jugador : tiene
+                                Jugador "1" --> "0..*" Sancion : tiene
+                                TipoDeporte .. Equipo 
+                        </div>
+                        <hr>
+                        <strong>- Referencias: </strong>
+                        <ol>
+                            <li>
+                                <a href="https://mermaid-js.github.io/mermaid/#/classDiagram" target="blank" rel="noreferer noopener"> 
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-link" viewBox="0 0 16 16">
+                                        <path d="M6.354 5.5H4a3 3 0 0 0 0 6h3a3 3 0 0 0 2.83-4H9c-.086 0-.17.01-.25.031A2 2 0 0 1 7 10.5H4a2 2 0 1 1 0-4h1.535c.218-.376.495-.714.82-1z"/>
+                                        <path d="M9 5.5a3 3 0 0 0-2.83 4h1.098A2 2 0 0 1 9 6.5h3a2 2 0 1 1 0 4h-1.535a4.02 4.02 0 0 1-.82 1H12a3 3 0 1 0 0-6H9z"/>
+                                    </svg> a) Documentación oficial
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.researchgate.net/profile/Claudia-Pons/publication/262765163/figure/fig3/AS:669505193791494@1536633885641/Figura-2-8-Ejemplo-de-transformacion-de-PIM-a-PSM-y-de-PSM-a-codigo_Q640.jpg" target="blank" rel="noreferer noopener"> 
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-link" viewBox="0 0 16 16">
+                                        <path d="M6.354 5.5H4a3 3 0 0 0 0 6h3a3 3 0 0 0 2.83-4H9c-.086 0-.17.01-.25.031A2 2 0 0 1 7 10.5H4a2 2 0 1 1 0-4h1.535c.218-.376.495-.714.82-1z"/>
+                                        <path d="M9 5.5a3 3 0 0 0-2.83 4h1.098A2 2 0 0 1 9 6.5h3a2 2 0 1 1 0 4h-1.535a4.02 4.02 0 0 1-.82 1H12a3 3 0 1 0 0-6H9z"/>
+                                    </svg> b) Ejemplo PIM a PSM
+                                </a>
+                            </li>
+                        </ol>
+                        <strong>- Nota: </strong> para las clases enumeradas en el HTML se colocó el código ASCII de los caracteres de control '<' y '>'
+                    </div>
+                </div>
+            </div>  
+        </div>  
+    </body>
+</html>
